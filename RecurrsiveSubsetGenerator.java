@@ -13,9 +13,9 @@ public class RecurrsiveSubsetGenerator<T> {
 		if(set == null) {
 			return null;
 		}
-		Set<Set<T>> returnSet = null;
+
 		if(set.size() < 2) {
-			returnSet = new HashSet<>();
+			Set<Set<T>> returnSet = new HashSet<>();
 			Set<T> emptySet = new HashSet<>();
 			returnSet.add(emptySet);
 			if(set.size() == 1) {
@@ -48,14 +48,10 @@ public class RecurrsiveSubsetGenerator<T> {
 		Set<Set<T>> mergedSet = new HashSet<>();
 		for (Set<T> leftSubset : leftSubsets) {
 			for (Set<T> rightSubset : rightSubsets) {
-				if(leftSubset.size() == 0) {
-					mergedSet.add(rightSubset);
-				} else {
-					Set<T> temp = new HashSet<>();
-					temp.addAll(leftSubset);
-					temp.addAll(rightSubset);
-					mergedSet.add(temp);
-				}
+				Set<T> temp = new HashSet<>();
+				temp.addAll(leftSubset);
+				temp.addAll(rightSubset);
+				mergedSet.add(temp);
 			}
 		}
 		return mergedSet;
